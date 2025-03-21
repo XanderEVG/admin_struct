@@ -1,0 +1,31 @@
+{
+    "name": "xanderevg/admin_struct",
+    "description": "Library for describing the structure of tables/grids in the z-q-ui admin area.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "grid admin",
+        "laravel",
+        "symfony",
+        "data grids"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Xanderevg\\GridFiltersLibrary\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "XanderEVG",
+            "email": "xanderEVG@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.2.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11",
+    }
+}
