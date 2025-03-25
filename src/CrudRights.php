@@ -12,12 +12,14 @@ class CrudRights implements \JsonSerializable
     ) {
     }
 
-    public function setAll(bool $right)
+    public function setAll(bool $right): self
     {
         $this->create = $right;
         $this->read = $right;
         $this->update = $right;
         $this->delete = $right;
+
+        return $this;
     }
 
     public function jsonSerialize(): array
