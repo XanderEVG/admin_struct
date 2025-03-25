@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
 
 class StringSelectField extends GridField
 {
@@ -11,11 +11,11 @@ class StringSelectField extends GridField
         string $name,
         string $label,
         array $options,
-        string $option_label = 'name',
+        string $optionLabel = 'name',
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::STRING_SELECT, alias: $alias);
         $this->setOptions($options);
-        $this->setOptionLabel($option_label);
+        $this->setOptionLabel($optionLabel);
     }
 }

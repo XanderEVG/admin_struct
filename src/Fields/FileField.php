@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
 
 class FileField extends GridField
 {
@@ -12,11 +12,11 @@ class FileField extends GridField
         string $label,
         string $accept = '.pdf, .doc, .docx, .odt, .ods, .xls, .xlsx',
         bool $multiple = false,
-        string $refer_url = '/api/files',
+        string $referUrl = '/api/files',
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::FILE, alias: $alias);
-        $this->setReferUrl($refer_url);
+        $this->setReferUrl($referUrl);
         $this->setAccept($accept);
         $this->setMultiple($multiple);
         $this->setSortable(false);

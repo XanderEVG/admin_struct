@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
-use App\Classes\DataStructs\GridPlace;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
+use Xanderevg\AdminStructLibrary\GridPlace;
 
 class LabelField extends GridField
 {
     public function __construct(
         string $name,
         string $label,
-        ?GridPlace $grid_place,
+        ?GridPlace $gridPlace,
     ) {
         parent::__construct($name, $label, FieldType::LABEL);
-        $this->setGridPlace($grid_place);
+        $this->setGridPlace($gridPlace);
     }
 }

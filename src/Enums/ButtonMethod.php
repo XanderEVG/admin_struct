@@ -1,20 +1,13 @@
 <?php
 
-namespace Xanderevg\GridFiltersLibrary\Enums;
+namespace Xanderevg\AdminStructLibrary\Enums;
 
-enum ButtonType implements \JsonSerializable
+enum ButtonMethod: string implements \JsonSerializable
 {
-    case NONE;
-    case RELOAD;
-    case MODEL;
-    case MODAL_HTML;
-    case MODAL_DOCS;
-    case MODAL_IMAGES;
-    case INPUT_ROW;
-    case INPUT_ROWS_MULTIPLE;
-    case DOWNLOAD;
-    case IMPORT;
-    case READONLY;
+    case GET = 'get';
+    case POST = 'post';
+    case PUT = 'put';
+    case DELETE = 'delete';
 
     public function jsonSerialize(): string
     {

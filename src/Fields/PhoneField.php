@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
 
 class PhoneField extends GridField
 {
     public function __construct(
         string $name = 'phone',
         string $label = 'Телефон',
-        ?int $max_length = 12,
+        ?int $maxLength = 12,
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::PHONE, alias: $alias);
-        $this->setMaxLength($max_length);
+        $this->setMaxLength($maxLength);
     }
 }

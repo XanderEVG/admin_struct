@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Classes\DataStructs;
+namespace Xanderevg\AdminStructLibrary;
+
+use Xanderevg\AdminStructLibrary\Enums\FieldShowIn;
+use Xanderevg\AdminStructLibrary\Enums\FieldShowOn;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
 
 class GridField implements \JsonSerializable
 {
-    public mixed $default_value = null;
-    public ?string $refer_url = null;
-    public ?string $option_label = null;
+    public mixed $defaultValue = null;
+    public ?string $referUrl = null;
+    public ?string $optionLabel = null;
 
     /**
      * @var array<string>|null
@@ -14,45 +18,38 @@ class GridField implements \JsonSerializable
     public ?array $dependency = null;
 
     /**
-     * @var array|null
-     *
-     * TSelectAdditionalInfo = {
-     *      field: string,
-     *      optionLabel?: string
-     * }
+     * @var GridFieldAdditionalInfo[]|null
      */
-    public ?array $additional_info = null;
+    public ?array $additionalInfo = null;
 
     public ?array $options = null;
     public ?bool $required = false;
     public ?bool $multiple = null;
     public ?string $accept = null;
 
-    // https://quasar.dev/vue-components/input#mask
-    // https://github.com/quasarframework/quasar/blob/dev/ui/src/components/input/use-mask.js#L6
     public ?string $mask = null;
     public ?float $step = null;
     public ?float $min = null;
     public ?float $max = null;
-    public ?int $max_length = null;
-    public ?string $max_width = null;
+    public ?int $maxLength = null;
+    public ?string $maxWidth = null;
 
     public ?bool $sortable = true;
     public ?bool $filterable = true;
-    public ?bool $multiple_filter = false;
+    public ?bool $multipleFilter = false;
     public ?bool $readonly = false;
     public ?bool $clearable = null;
-    public ?FieldShowOn $show_on = FieldShowOn::ALL;
-    public ?FieldShowIn $show_in = FieldShowIn::ALL;
+    public ?FieldShowOn $showOn = FieldShowOn::ALL;
+    public ?FieldShowIn $showIn = FieldShowIn::ALL;
     public ?bool $autogrow = false;
-    public ?array $sub_struct = null;
-    public ?GridPlace $grid_place = null;
+    public ?array $subStruct = null;
+    public ?GridPlace $gridPlace = null;
     public ?string $hint = null;
 
     public function __construct(
         public string $name,
         public string $label,
-        public FieldType $type,
+        public FieldType|string $type,
         public ?string $alias = null,
     ) {
     }
@@ -64,12 +61,12 @@ class GridField implements \JsonSerializable
             'name' => $this->name,
             'label' => $this->label,
             'type' => $this->type,
-            'defaultValue' => $this->default_value,
+            'defaultValue' => $this->defaultValue,
 
-            'referUrl' => $this->refer_url,
-            'optionLabel' => $this->option_label,
+            'referUrl' => $this->referUrl,
+            'optionLabel' => $this->optionLabel,
             'dependency' => $this->dependency,
-            'additionalInfo' => $this->additional_info,
+            'additionalInfo' => $this->additionalInfo,
             'options' => $this->options,
 
             'multiple' => $this->multiple,
@@ -78,45 +75,45 @@ class GridField implements \JsonSerializable
             'step' => $this->step,
             'min' => $this->min,
             'max' => $this->max,
-            'maxLength' => $this->max_length,
-            'maxWidth' => $this->max_width,
+            'maxLength' => $this->maxLength,
+            'maxWidth' => $this->maxWidth,
             'required' => $this->required,
             'sortable' => $this->sortable,
             'filterable' => $this->filterable,
-            'multipleFilter' => $this->multiple_filter,
+            'multipleFilter' => $this->multipleFilter,
             'readonly' => $this->readonly,
             'clearable' => $this->clearable,
-            'showIn' => $this->show_in,
-            'showOn' => $this->show_on,
+            'showIn' => $this->showIn,
+            'showOn' => $this->showOn,
             'autogrow' => $this->autogrow,
-            'gridPlace' => $this->grid_place,
+            'gridPlace' => $this->gridPlace,
             'hint' => $this->hint,
         ];
 
-        if ($this->sub_struct) {
-            $response['sub_struct'] = $this->sub_struct;
+        if ($this->subStruct) {
+            $response['subStruct'] = $this->subStruct;
         }
 
         return $response;
     }
 
-    public function setDefaultValue(mixed $default_value): GridField
+    public function setDefaultValue(mixed $defaultValue): GridField
     {
-        $this->default_value = $default_value;
+        $this->defaultValue = $defaultValue;
 
         return $this;
     }
 
-    public function setReferUrl(?string $refer_url): GridField
+    public function setReferUrl(?string $referUrl): GridField
     {
-        $this->refer_url = $refer_url;
+        $this->referUrl = $referUrl;
 
         return $this;
     }
 
-    public function setOptionLabel(?string $option_label): GridField
+    public function setOptionLabel(?string $optionLabel): GridField
     {
-        $this->option_label = $option_label;
+        $this->optionLabel = $optionLabel;
 
         return $this;
     }
@@ -128,16 +125,16 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setAdditionalInfo(?array $additional_info): GridField
+    public function setAdditionalInfo(?array $additionalInfo): GridField
     {
-        $this->additional_info = $additional_info;
+        $this->additionalInfo = $additionalInfo;
 
         return $this;
     }
 
-    public function addAdditionalInfo(GridFieldAdditionalInfo $additional_item): GridField
+    public function addAdditionalInfo(GridFieldAdditionalInfo $additionalItem): GridField
     {
-        $this->additional_info[] = $additional_item;
+        $this->additionalInfo[] = $additionalItem;
 
         return $this;
     }
@@ -198,9 +195,9 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setMaxWidth(?string $max_width): GridField
+    public function setMaxWidth(?string $maxWidth): GridField
     {
-        $this->max_width = $max_width;
+        $this->maxWidth = $maxWidth;
 
         return $this;
     }
@@ -212,9 +209,9 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setMultipleFilter(?bool $multiple_filter): GridField
+    public function setMultipleFilter(?bool $multipleFilter): GridField
     {
-        $this->multiple_filter = $multiple_filter;
+        $this->multipleFilter = $multipleFilter;
 
         return $this;
     }
@@ -233,16 +230,16 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setShowOn(?FieldShowOn $show_on): GridField
+    public function setShowOn(?FieldShowOn $showOn): GridField
     {
-        $this->show_on = $show_on;
+        $this->showOn = $showOn;
 
         return $this;
     }
 
-    public function setShowIn(?FieldShowIn $show_in): GridField
+    public function setShowIn(?FieldShowIn $showIn): GridField
     {
-        $this->show_in = $show_in;
+        $this->showIn = $showIn;
 
         return $this;
     }
@@ -261,9 +258,9 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setMaxLength(?int $max_length): GridField
+    public function setMaxLength(?int $maxLength): GridField
     {
-        $this->max_length = $max_length;
+        $this->maxLength = $maxLength;
 
         return $this;
     }
@@ -275,9 +272,9 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setGridPlace(?GridPlace $grid_place): GridField
+    public function setGridPlace(?GridPlace $gridPlace): GridField
     {
-        $this->grid_place = $grid_place;
+        $this->gridPlace = $gridPlace;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\DataStructs;
+namespace Xanderevg\AdminStructLibrary\Enums;
 
 /**
  * Enum for specifying where a field should be shown.

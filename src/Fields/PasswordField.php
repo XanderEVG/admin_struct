@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldShowIn;
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
+use Xanderevg\AdminStructLibrary\Enums\FieldShowIn;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
 
 class PasswordField extends GridField
 {

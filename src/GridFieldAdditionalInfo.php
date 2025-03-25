@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Classes\DataStructs;
+namespace Xanderevg\AdminStructLibrary;
 
 class GridFieldAdditionalInfo implements \JsonSerializable
 {
     public function __construct(
         public string $field,
-        public ?string $option_label,
+        public ?string $optionLabel = null,
     ) {
     }
 
@@ -14,7 +14,7 @@ class GridFieldAdditionalInfo implements \JsonSerializable
     {
         $response = [
             'field' => $this->field,
-            'optionLabel' => $this->option_label,
+            'optionLabel' => $this->optionLabel,
         ];
 
         return $response;

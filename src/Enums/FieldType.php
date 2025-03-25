@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\DataStructs;
+namespace Xanderevg\AdminStructLibrary\Enums;
 
 enum FieldType: string implements \JsonSerializable
 {
@@ -30,9 +30,6 @@ enum FieldType: string implements \JsonSerializable
 
     case COORDINATE = 'coordinate';
     case EDITOR = 'editor';
-
-    // WIP case GRID_ROWS = 'grid_rows';
-
     case LABEL = 'label';
     case FIAS = 'fias';
     case ANSWERS = 'answers';

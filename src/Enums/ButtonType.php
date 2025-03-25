@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\Enums\Buttons;
+namespace Xanderevg\AdminStructLibrary\Enums;
 
 enum ButtonType implements \JsonSerializable
 {

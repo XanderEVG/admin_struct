@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Xanderevg\\GridFiltersLibrary\\": "src/"
+            "Xanderevg\\AdminStructLibrary\\": "src/"
         }
     },
     "authors": [
@@ -27,5 +27,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^11",
+        "phpstan/phpstan": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.69"
     }
 }

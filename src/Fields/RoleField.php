@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
-use App\Classes\Enums\UserRoles;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
 
 class RoleField extends GridField
 {
     public function __construct(
-        bool $with_admin_role = false,
+        array $options,
         ?string $alias = null,
     ) {
         parent::__construct('role', 'Роль пользователя', FieldType::ROLES, alias: $alias);
-        $options = $with_admin_role ? UserRoles::rolesWithDesc() : UserRoles::rolesWithDescWithoutAdmin();
         $this->setOptions($options);
         $this->setOptionLabel('name');
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\DataStructs;
+namespace Xanderevg\AdminStructLibrary\Enums;
 
 enum FieldShowOn: string implements \JsonSerializable
 {

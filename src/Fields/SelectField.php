@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Classes\DataStructs\Fields;
+namespace Xanderevg\AdminStructLibrary\Fields;
 
-use App\Classes\DataStructs\FieldType;
-use App\Classes\DataStructs\GridField;
+use Xanderevg\AdminStructLibrary\Enums\FieldType;
+use Xanderevg\AdminStructLibrary\GridField;
 
 class SelectField extends GridField
 {
     public function __construct(
         string $name,
         string $label,
-        string $refer_url,
-        string $option_label,
+        string $referUrl,
+        string $optionLabel,
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::SELECT, alias: $alias);
-        $this->setReferUrl($refer_url);
-        $this->setOptionLabel($option_label);
+        $this->setReferUrl($referUrl);
+        $this->setOptionLabel($optionLabel);
     }
 }
