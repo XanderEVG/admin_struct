@@ -30,7 +30,6 @@ class GridFields implements GridFieldsInterface
     {
         foreach ($this->fields as $i => $existingField) {
             if ($existingField->name === $fieldName) {
-
                 if ($newField->name !== $fieldName) {
                     $this->validateName($newField->name);
 
@@ -39,6 +38,7 @@ class GridFields implements GridFieldsInterface
                 }
 
                 $this->fields[$i] = $newField;
+
                 return;
             }
         }
@@ -53,6 +53,7 @@ class GridFields implements GridFieldsInterface
                 unset($this->fields[$i]);
                 unset($this->fieldNamesHash[$fieldName]);
                 $this->fields = array_values($this->fields);
+
                 return;
             }
         }
@@ -82,9 +83,7 @@ class GridFields implements GridFieldsInterface
     private function validateName(string $name): void
     {
         if (isset($this->fieldNamesHash[$name])) {
-            throw new GridFieldsHasDuplicationsException(
-                "Field name '{$name}' already exists in grid structure"
-            );
+            throw new GridFieldsHasDuplicationsException("Field name '{$name}' already exists in grid structure");
         }
     }
 

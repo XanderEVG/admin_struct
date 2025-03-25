@@ -15,11 +15,10 @@ class PageTest extends TestCase
 {
     public function testPage()
     {
-        $page = new class() extends AbstractPage {
-
+        $page = new class extends AbstractPage {
             protected static function calcCrud(string $userRole): CrudRights
             {
-                return new CrudRights($userRole === 'admin', $userRole === 'admin', $userRole === 'admin', $userRole === 'admin');
+                return new CrudRights('admin' === $userRole, 'admin' === $userRole, 'admin' === $userRole, 'admin' === $userRole);
             }
 
             protected static function generateStruct(string $userRole): GridFields
