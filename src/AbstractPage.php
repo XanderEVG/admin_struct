@@ -4,7 +4,6 @@ namespace Xanderevg\AdminStructLibrary;
 
 class AbstractPage implements PageInterface
 {
-
     protected static ?string $menuGroup = null;
     protected static string $pageName = 'Новая страница';
     protected static string $frontUrl = '/new_page';
