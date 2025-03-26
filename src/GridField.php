@@ -45,6 +45,7 @@ class GridField implements \JsonSerializable
     public ?array $subStruct = null;
     public ?GridPlace $gridPlace = null;
     public ?string $hint = null;
+    public ?string $orderKey = null;
 
     public function __construct(
         public string $name,
@@ -68,6 +69,7 @@ class GridField implements \JsonSerializable
             'dependency' => $this->dependency,
             'additionalInfo' => $this->additionalInfo,
             'options' => $this->options,
+            'orderByKey' => $this->orderKey,
 
             'multiple' => $this->multiple,
             'accept' => $this->accept,

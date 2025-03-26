@@ -18,4 +18,12 @@ class SelectField extends GridField
         $this->setReferUrl($referUrl);
         $this->setOptionLabel($optionLabel);
     }
+
+    public function setOrderKey(?string $orderKey): static
+    {
+        $this->orderKey = $orderKey;
+
+        return $this;
+    }
+
 }
