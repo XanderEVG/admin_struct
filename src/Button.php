@@ -19,7 +19,14 @@ class Button implements \JsonSerializable
         public ButtonColor $color,
         public ?int $colsInModal = 1,
         public ?bool $enable = true,
+        public ?GridFields $struct = null,
     ) {
+    }
+
+    public function setStruct(?GridFields $struct): Button
+    {
+        $this->struct = $struct;
+        return $this;
     }
 
     public function jsonSerialize(): array
@@ -35,6 +42,7 @@ class Button implements \JsonSerializable
             'color' => $this->color,
             'colsInModal' => $this->colsInModal,
             'enable' => $this->enable,
+            'struct' => $this->struct
         ];
     }
 }
