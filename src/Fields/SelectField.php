@@ -25,5 +25,4 @@ class SelectField extends GridField
 
         return $this;
     }
-
 }
