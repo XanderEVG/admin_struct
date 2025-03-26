@@ -11,6 +11,6 @@ enum ButtonMethod: string implements \JsonSerializable
 
     public function jsonSerialize(): string
     {
-        return $this->name;
+        return strtolower($this->name);
     }
 }

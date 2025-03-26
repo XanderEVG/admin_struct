@@ -4,7 +4,7 @@ namespace Xanderevg\AdminStructLibrary;
 
 use Xanderevg\AdminStructLibrary\Exceptions\GridFieldsHasDuplicationsException;
 
-class GridFields implements GridFieldsInterface
+class GridFields implements GridFieldsInterface, \JsonSerializable
 {
     /** @var GridField[] */
     private array $fields = [];
@@ -78,6 +78,11 @@ class GridFields implements GridFieldsInterface
         }
 
         return $response;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->toArray();
     }
 
     private function validateName(string $name): void
