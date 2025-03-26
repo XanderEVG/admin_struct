@@ -12,15 +12,22 @@ class Button implements \JsonSerializable
         public string $tooltip,
         public string $icon,
         public string $label,
-        public string $getUrl,
-        public string $actionUrl,
+        public ?string $getUrl,
+        public ?string $actionUrl,
         public ButtonType $type,
-        public ButtonMethod $actionMethod,
-        public ButtonColor $color,
+        public ?ButtonMethod $actionMethod = null,
+        public ?ButtonColor $color = ButtonColor::PRIMARY,
         public ?int $colsInModal = 1,
         public ?bool $enable = true,
         public ?GridFields $struct = null,
     ) {
+        if ($this->getUrl === null && $this->actionUrl === null) {
+            throw new \RuntimeException("GetUrl and actionUrl not specified");
+        }
+
+        if ($this->actionUrl !== null && $this->actionMethod === null) {
+            throw new \RuntimeException("actionMethod not specified");
+        }
     }
 
     public function setStruct(?GridFields $struct): Button
