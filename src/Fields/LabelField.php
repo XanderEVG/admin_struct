@@ -16,6 +16,6 @@ class LabelField extends GridField
     ) {
         parent::__construct($name, $label, FieldType::LABEL);
         $this->setGridPlace($gridPlace);
-        $this->setShowIn(FieldShowIn::MODAL );
+        $this->setShowIn(FieldShowIn::MODAL);
     }
 }
