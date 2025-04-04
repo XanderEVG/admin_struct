@@ -127,6 +127,9 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
+    /**
+     * @param GridFieldAdditionalInfo[] $additionalInfo
+     */
     public function setAdditionalInfo(?array $additionalInfo): GridField
     {
         $this->additionalInfo = $additionalInfo;
