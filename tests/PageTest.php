@@ -31,7 +31,7 @@ class PageTest extends TestCase
 
             protected static function generateButtons(string $userRole): array
             {
-                return [new Button('go to home', 'btn1', 'gohome', '/', '/', ButtonMethod::GET, ButtonType::RELOAD, ButtonColor::ACCENT)];
+                return [new Button('go to home', 'btn1', 'gohome', '/', '/', ButtonType::RELOAD,ButtonMethod::GET,  ButtonColor::ACCENT)];
             }
         };
 

@@ -12,10 +12,13 @@ enum FieldType: string implements \JsonSerializable
     case SELECT = 'select';
     case STRING_SELECT = 'stringSelect';
     case SELECT_TREE = 'selectTree';
+    case SEARCH_STRING = 'searchString';
+    case SEARCH_SELECT = 'searchSelect';
     case ROLES = 'roles';
 
     case BOOLEAN = 'boolean';
     case DATE = 'date';
+    case TIME = 'time';
     case DATETIME = 'datetime';
     case PASSWORD = 'password';
 
