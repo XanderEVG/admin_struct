@@ -36,6 +36,7 @@ enum FieldType: string implements \JsonSerializable
     case LABEL = 'label';
     case FIAS = 'fias';
     case ANSWERS = 'answers';
+    case OKVED = 'okved';
 
     public function jsonSerialize(): string
     {
