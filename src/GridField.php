@@ -45,6 +45,7 @@ class GridField implements \JsonSerializable
     public ?array $subStruct = null;
     public ?GridPlace $gridPlace = null;
     public ?string $hint = null;
+    public ?string $placeholder = null;
     public ?string $orderKey = null;
 
     public function __construct(
@@ -90,6 +91,7 @@ class GridField implements \JsonSerializable
             'autogrow' => $this->autogrow,
             'gridPlace' => $this->gridPlace,
             'hint' => $this->hint,
+            'placeholder' => $this->placeholder,
         ];
 
         if ($this->subStruct) {
@@ -287,6 +289,12 @@ class GridField implements \JsonSerializable
     public function setHint(?string $hint): GridField
     {
         $this->hint = $hint;
+
+        return $this;
+    }
+    public function setPlaceholder(?string $placeholder): GridField
+    {
+        $this->placeholder = $placeholder;
 
         return $this;
     }
