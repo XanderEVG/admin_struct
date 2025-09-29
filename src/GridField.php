@@ -143,6 +143,10 @@ class GridField implements \JsonSerializable
             $params[] = 'gridPlace';
         }
 
+        if ($this->dependency) {
+            $params[] = 'dependency';
+        }
+
         if ($this->hint) {
             $params[] = 'hint';
         }
