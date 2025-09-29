@@ -16,4 +16,17 @@ class PasswordField extends GridField
         parent::__construct($name, $label, FieldType::PASSWORD, alias: $alias);
         $this->setShowIn(FieldShowIn::MODAL);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+        ];
+
+        if ($this->maxLength) {
+            $params[] = 'maxLength';
+        }
+
+        return $params;
+    }
 }

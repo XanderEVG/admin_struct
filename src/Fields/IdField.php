@@ -17,4 +17,20 @@ class IdField extends GridField
         $this->setShowIn(FieldShowIn::GRID);
         $this->setReadonly(true);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+        ];
+
+        if ($this->min) {
+            $params[] = 'min';
+        }
+        if ($this->max) {
+            $params[] = 'max';
+        }
+
+        return $params;
+    }
 }

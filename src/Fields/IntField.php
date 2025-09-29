@@ -14,4 +14,23 @@ class IntField extends GridField
     ) {
         parent::__construct($name, $label, FieldType::NUMBER, alias: $alias);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+        ];
+
+        if ($this->min) {
+            $params[] = 'min';
+        }
+        if ($this->max) {
+            $params[] = 'max';
+        }
+        if ($this->mask) {
+            $params[] = 'mask';
+        }
+
+        return $params;
+    }
 }

@@ -18,4 +18,23 @@ class NumberField extends GridField
         $this->setMin($min);
         $this->setMax($max);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+        ];
+
+        if ($this->min) {
+            $params[] = 'min';
+        }
+        if ($this->max) {
+            $params[] = 'max';
+        }
+        if ($this->mask) {
+            $params[] = 'mask';
+        }
+
+        return $params;
+    }
 }

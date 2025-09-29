@@ -47,6 +47,9 @@ class GridField implements \JsonSerializable
     public ?string $hint = null;
     public ?string $placeholder = null;
     public ?string $orderKey = null;
+    public ?string $fiasType = null;
+    public ?bool $fiasOnlyTo = null;
+    public ?bool $fiasGetObject = null;
 
     public function __construct(
         public string $name,
@@ -92,13 +95,72 @@ class GridField implements \JsonSerializable
             'gridPlace' => $this->gridPlace,
             'hint' => $this->hint,
             'placeholder' => $this->placeholder,
+            'fiasType' => $this->fiasType,
+            'fiasOnlyTo' => $this->fiasOnlyTo,
+            'fiasGetObject' => $this->fiasGetObject,
         ];
 
         if ($this->subStruct) {
             $response['subStruct'] = $this->subStruct;
         }
 
+        $outputParams = $this->outputFieldParams();
+        if ($outputParams !== null) {
+            $response = array_intersect_key($response, array_flip($outputParams));
+        }
+
         return $response;
+    }
+
+    protected function outputFieldParams(): ?array
+    {
+        return null;
+    }
+
+    protected function outputFieldStdParams(): ?array
+    {
+        $params = [
+            'name',
+            'label',
+            'type',
+            'required',
+            'sortable',
+            'filterable',
+            'readonly',
+            'showIn',
+            'showOn',
+        ];
+
+        if ($this->alias) {
+            $params[] = 'alias';
+        }
+
+        if ($this->defaultValue) {
+            $params[] = 'defaultValue';
+        }
+
+        if ($this->gridPlace) {
+            $params[] = 'gridPlace';
+        }
+
+        if ($this->hint) {
+            $params[] = 'hint';
+        }
+
+        if ($this->placeholder) {
+            $params[] = 'placeholder';
+        }
+
+        if ($this->maxWidth) {
+            $params[] = 'maxWidth';
+        }
+
+        if ($this->clearable) {
+            $params[] = 'clearable';
+        }
+
+
+        return $params;
     }
 
     public function setDefaultValue(mixed $defaultValue): GridField
@@ -297,5 +359,20 @@ class GridField implements \JsonSerializable
         $this->placeholder = $placeholder;
 
         return $this;
+    }
+
+    public function setFiasGetObject(?bool $fiasGetObject): void
+    {
+        $this->fiasGetObject = $fiasGetObject;
+    }
+
+    public function setFiasOnlyTo(?bool $fiasOnlyTo): void
+    {
+        $this->fiasOnlyTo = $fiasOnlyTo;
+    }
+
+    public function setFiasType(?string $fiasType): void
+    {
+        $this->fiasType = $fiasType;
     }
 }

@@ -16,4 +16,20 @@ class StringField extends GridField
         parent::__construct($name, $label, FieldType::STRING, alias: $alias);
         $this->setMaxLength($maxLength);
     }
+
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+        ];
+
+        if ($this->maxLength) {
+            $params[] = 'maxLength';
+        }
+        if ($this->mask) {
+            $params[] = 'mask';
+        }
+        return $params;
+    }
 }

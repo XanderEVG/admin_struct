@@ -16,4 +16,18 @@ class RolesField extends GridField
         $this->setOptionLabel('name');
         $this->setMultiple(true);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+            'optionLabel',
+        ];
+
+        if ($this->mask) {
+            $params[] = 'mask';
+        }
+
+        return $params;
+    }
 }

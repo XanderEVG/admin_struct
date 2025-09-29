@@ -18,4 +18,11 @@ class LabelField extends GridField
         $this->setGridPlace($gridPlace);
         $this->setShowIn(FieldShowIn::MODAL);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        return [
+            ...$this->outputFieldStdParams(),
+        ];
+    }
 }
