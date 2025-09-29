@@ -14,4 +14,11 @@ class DateField extends GridField
     ) {
         parent::__construct($name, $label, FieldType::DATE, alias: $alias);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        return [
+            ...$this->outputFieldStdParams(),
+        ];
+    }
 }

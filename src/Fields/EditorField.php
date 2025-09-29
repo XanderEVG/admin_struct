@@ -13,5 +13,18 @@ class EditorField extends GridField
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::EDITOR, alias: $alias);
+        $this->setSortable(false);
+    }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+        ];
+
+        if ($this->maxLength) {
+            $params[] = 'maxLength';
+        }
+        return $params;
     }
 }

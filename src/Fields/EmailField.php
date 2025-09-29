@@ -14,4 +14,11 @@ class EmailField extends GridField
     ) {
         parent::__construct($name, $label, FieldType::EMAIL, alias: $alias);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        return [
+            ...$this->outputFieldStdParams(),
+        ];
+    }
 }

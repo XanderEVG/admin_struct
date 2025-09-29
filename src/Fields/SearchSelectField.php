@@ -25,4 +25,22 @@ class SearchSelectField extends GridField
 
         return $this;
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+            'referUrl',
+            'optionLabel',
+        ];
+
+        if ($this->mask) {
+            $params[] = 'mask';
+        }
+        if ($this->maxLength) {
+            $params[] = 'maxLength';
+        }
+
+        return $params;
+    }
 }

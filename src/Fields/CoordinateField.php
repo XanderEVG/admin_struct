@@ -14,4 +14,11 @@ class CoordinateField extends GridField
     ) {
         parent::__construct($name, $label, FieldType::COORDINATE, alias: $alias);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        return [
+            ...$this->outputFieldStdParams(),
+        ];
+    }
 }

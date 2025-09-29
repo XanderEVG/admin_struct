@@ -11,11 +11,11 @@ class BooleanFieldTest extends TestCase
     {
         $gridField = new BooleanField('field1', 'field1');
         $fieldArray = $gridField->jsonSerialize();
-        self::assertEquals(null, $fieldArray['alias']);
+        self::assertArrayNotHasKey('alias', $fieldArray);
         self::assertEquals('field1', $fieldArray['name']);
         self::assertInstanceOf(FieldType::class, $fieldArray['type']);
         self::assertEquals(FieldType::BOOLEAN, $fieldArray['type']);
-        self::assertEquals(null, $fieldArray['defaultValue']);
+        self::assertArrayNotHasKey('defaultValue', $fieldArray);
     }
 
     public function testBooleanWithAlias()
@@ -39,6 +39,8 @@ class BooleanFieldTest extends TestCase
         $gridField = (new BooleanField('field1', 'field1', 'table'))->setAdditionalInfo([new GridFieldAdditionalInfo('field2')]);
         $fieldArray = $gridField->jsonSerialize();
         self::assertEquals('table', $fieldArray['alias']);
-        self::assertInstanceOf(GridFieldAdditionalInfo::class, $fieldArray['additionalInfo'][0]);
+
+        // И не должен
+        self::assertArrayNotHasKey('additionalInfo', $fieldArray);
     }
 }

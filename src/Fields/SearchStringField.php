@@ -16,4 +16,21 @@ class SearchStringField extends GridField
         parent::__construct($name, $label, FieldType::SEARCH_STRING, alias: $alias);
         $this->setMaxLength($maxLength);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+            'referUrl',
+        ];
+
+        if ($this->mask) {
+            $params[] = 'mask';
+        }
+        if ($this->maxLength) {
+            $params[] = 'maxLength';
+        }
+
+        return $params;
+    }
 }

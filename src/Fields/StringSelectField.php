@@ -18,4 +18,31 @@ class StringSelectField extends GridField
         $this->setOptions($options);
         $this->setOptionLabel($optionLabel);
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+            'options',
+            'optionLabel',
+        ];
+
+        if ($this->multiple) {
+            $params[] = 'multiple';
+        }
+        if ($this->multipleFilter) {
+            $params[] = 'multipleFilter';
+        }
+        if ($this->additionalInfo) {
+            $params[] = 'additionalInfo';
+        }
+        if ($this->dependency) {
+            $params[] = 'dependency';
+        }
+        if ($this->orderKey) {
+            $params[] = 'orderKey';
+        }
+
+        return $params;
+    }
 }

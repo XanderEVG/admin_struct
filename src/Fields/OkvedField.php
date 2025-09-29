@@ -25,4 +25,25 @@ class OkvedField extends GridField
 
         return $this;
     }
+
+    protected function outputFieldParams(): ?array
+    {
+        $params = [
+            ...$this->outputFieldStdParams(),
+            'referUrl',
+            'optionLabel',
+        ];
+
+        if ($this->additionalInfo) {
+            $params[] = 'additionalInfo';
+        }
+        if ($this->orderKey) {
+            $params[] = 'orderKey';
+        }
+        if ($this->multiple) {
+            $params[] = 'multiple';
+        }
+
+        return $params;
+    }
 }
