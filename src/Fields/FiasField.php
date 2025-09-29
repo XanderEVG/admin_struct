@@ -16,6 +16,9 @@ class FiasField extends GridField
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::FIAS, alias: $alias);
+        $this->setFiasType($fiasType);
+        $this->setFiasOnlyTo($fiasOnlyTo);
+        $this->setFiasGetObject($fiasGetObject);
     }
 
     protected function outputFieldParams(): ?array
