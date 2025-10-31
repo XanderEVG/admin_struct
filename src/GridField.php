@@ -50,6 +50,7 @@ class GridField implements \JsonSerializable
     public ?string $fiasType = null;
     public ?bool $fiasOnlyTo = null;
     public ?bool $fiasGetObject = null;
+    public ?array $customOptions = null;
 
     public function __construct(
         public string $name,
@@ -98,6 +99,7 @@ class GridField implements \JsonSerializable
             'fiasType' => $this->fiasType,
             'fiasOnlyTo' => $this->fiasOnlyTo,
             'fiasGetObject' => $this->fiasGetObject,
+            'customOptions' => $this->customOptions,
         ];
 
         if ($this->subStruct) {
@@ -115,6 +117,16 @@ class GridField implements \JsonSerializable
     protected function outputFieldParams(): ?array
     {
         return null;
+    }
+
+    public function getCustomOptions(): ?array
+    {
+        return $this->customOptions;
+    }
+
+    public function setCustomOptions(?array $customOptions): void
+    {
+        $this->customOptions = $customOptions;
     }
 
     protected function outputFieldStdParams(): ?array
@@ -161,6 +173,10 @@ class GridField implements \JsonSerializable
 
         if ($this->clearable) {
             $params[] = 'clearable';
+        }
+
+        if ($this->customOptions) {
+            $params[] = 'customOptions';
         }
 
 
