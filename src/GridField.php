@@ -119,16 +119,6 @@ class GridField implements \JsonSerializable
         return null;
     }
 
-    public function getCustomOptions(): ?array
-    {
-        return $this->customOptions;
-    }
-
-    public function setCustomOptions(?array $customOptions): void
-    {
-        $this->customOptions = $customOptions;
-    }
-
     protected function outputFieldStdParams(): ?array
     {
         $params = [
@@ -381,18 +371,36 @@ class GridField implements \JsonSerializable
         return $this;
     }
 
-    public function setFiasGetObject(?bool $fiasGetObject): void
+    public function setFiasGetObject(?bool $fiasGetObject): GridField
     {
         $this->fiasGetObject = $fiasGetObject;
+
+        return $this;
     }
 
-    public function setFiasOnlyTo(?bool $fiasOnlyTo): void
+    public function setFiasOnlyTo(?bool $fiasOnlyTo): GridField
     {
         $this->fiasOnlyTo = $fiasOnlyTo;
+
+        return $this;
     }
 
-    public function setFiasType(?string $fiasType): void
+    public function setFiasType(?string $fiasType): GridField
     {
         $this->fiasType = $fiasType;
+
+        return $this;
+    }
+
+    public function getCustomOptions(): ?array
+    {
+        return $this->customOptions;
+    }
+
+    public function setCustomOptions(?array $customOptions): GridField
+    {
+        $this->customOptions = $customOptions;
+
+        return $this;
     }
 }
