@@ -21,6 +21,7 @@ class RoleField extends GridField
         $params = [
             ...$this->outputFieldStdParams(),
             'optionLabel',
+            'options',
         ];
 
         if ($this->mask) {
