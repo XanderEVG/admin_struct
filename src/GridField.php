@@ -51,6 +51,7 @@ class GridField implements \JsonSerializable
     public ?bool $fiasOnlyTo = null;
     public ?bool $fiasGetObject = null;
     public ?array $customOptions = null;
+    public ?string $radioGroup = null;
 
     public function __construct(
         public string $name,
@@ -100,6 +101,7 @@ class GridField implements \JsonSerializable
             'fiasOnlyTo' => $this->fiasOnlyTo,
             'fiasGetObject' => $this->fiasGetObject,
             'customOptions' => $this->customOptions,
+            'radioGroup' => $this->radioGroup,
         ];
 
         if ($this->subStruct) {
@@ -400,6 +402,18 @@ class GridField implements \JsonSerializable
     public function setCustomOptions(?array $customOptions): GridField
     {
         $this->customOptions = $customOptions;
+
+        return $this;
+    }
+
+    public function getRadioGroup(): ?string
+    {
+        return $this->radioGroup;
+    }
+
+    public function setRadioGroup(?string $radioGroup): GridField
+    {
+        $this->radioGroup = $radioGroup;
 
         return $this;
     }
