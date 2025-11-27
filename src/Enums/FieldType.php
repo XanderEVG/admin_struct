@@ -17,6 +17,8 @@ enum FieldType: string implements \JsonSerializable
     case ROLES = 'roles';
 
     case BOOLEAN = 'boolean';
+    case CHECKBOX = 'checkbox';
+    case RADIO = 'radio';
     case DATE = 'date';
     case TIME = 'time';
     case DATETIME = 'datetime';
