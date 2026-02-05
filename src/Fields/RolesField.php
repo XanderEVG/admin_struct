@@ -28,6 +28,12 @@ class RolesField extends GridField
         if ($this->mask) {
             $params[] = 'mask';
         }
+        if ($this->multiple) {
+            $params[] = 'multiple';
+        }
+        if ($this->multipleFilter) {
+            $params[] = 'multipleFilter';
+        }
 
         return $params;
     }
