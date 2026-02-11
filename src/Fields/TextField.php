@@ -29,6 +29,7 @@ class TextField extends GridField
         if ($this->mask) {
             $params[] = 'mask';
         }
+
         return $params;
     }
 }

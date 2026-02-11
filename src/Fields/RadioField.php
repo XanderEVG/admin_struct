@@ -26,6 +26,7 @@ class RadioField extends GridField
         if ($this->radioGroup) {
             $params[] = 'radioGroup';
         }
+
         return $params;
     }
 }

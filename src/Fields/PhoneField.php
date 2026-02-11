@@ -12,8 +12,7 @@ class PhoneField extends GridField
         string $label = 'Телефон',
         ?int $maxLength = 12,
         ?string $alias = null,
-    )
-    {
+    ) {
         parent::__construct($name, $label, FieldType::PHONE, alias: $alias);
         $this->setMaxLength($maxLength);
     }
