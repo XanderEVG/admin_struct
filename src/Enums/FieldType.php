@@ -33,6 +33,8 @@ enum FieldType: string implements \JsonSerializable
     case PHONE = 'phone';
     case EMAIL = 'email';
 
+    case SUBGRID = 'subgrid';
+
     case COORDINATE = 'coordinate';
     case EDITOR = 'editor';
     case LABEL = 'label';

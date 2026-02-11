@@ -63,7 +63,7 @@ class GridFields implements GridFieldsInterface, \JsonSerializable
     {
         foreach ($this->fields as $i => $existField) {
             if ($existField->name === $fieldName) {
-                $this->fields[$i]->subStruct = $subStruct->toArray();
+                $this->fields[$i]->subStruct = $subStruct;
 
                 return;
             }
