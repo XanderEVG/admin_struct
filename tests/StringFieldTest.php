@@ -2,9 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Xanderevg\AdminStructLibrary\Enums\FieldType;
-use Xanderevg\AdminStructLibrary\Fields\BooleanField;
 use Xanderevg\AdminStructLibrary\Fields\StringField;
-use Xanderevg\AdminStructLibrary\GridFieldAdditionalInfo;
 
 class StringFieldTest extends TestCase
 {

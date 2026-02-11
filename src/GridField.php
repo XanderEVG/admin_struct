@@ -2,7 +2,6 @@
 
 namespace Xanderevg\AdminStructLibrary;
 
-use \RuntimeException;
 use Xanderevg\AdminStructLibrary\Enums\FieldShowIn;
 use Xanderevg\AdminStructLibrary\Enums\FieldShowOn;
 use Xanderevg\AdminStructLibrary\Enums\FieldType;
@@ -106,14 +105,14 @@ class GridField implements \JsonSerializable
         ];
 
         if ($this->subStruct) {
-            if ($this->type !== FieldType::SUBGRID) {
-                throw new RuntimeException("Не пустой subStruct в поле типа не SUBGRID");
+            if (FieldType::SUBGRID !== $this->type) {
+                throw new \RuntimeException('Не пустой subStruct в поле типа не SUBGRID');
             }
-            $response['subStruct'] = $this->subStruct;
+            $response['subStruct'] = $this->subStruct->toArray();
         }
 
         $outputParams = $this->outputFieldParams();
-        if ($outputParams !== null) {
+        if (null !== $outputParams) {
             $response = array_intersect_key($response, array_flip($outputParams));
         }
 
@@ -142,17 +141,6 @@ class GridField implements \JsonSerializable
         if ($this->readonly) {
             $params[] = 'readonly';
         }
-
-
-
-
-
-
-
-
-
-
-
 
         if ($this->alias) {
             $params[] = 'alias';
@@ -189,7 +177,9 @@ class GridField implements \JsonSerializable
         if ($this->customOptions) {
             $params[] = 'customOptions';
         }
-
+        if ($this->showOn) {
+            $params[] = 'showOn';
+        }
 
         return $params;
     }
@@ -385,6 +375,7 @@ class GridField implements \JsonSerializable
 
         return $this;
     }
+
     public function setPlaceholder(?string $placeholder): GridField
     {
         $this->placeholder = $placeholder;

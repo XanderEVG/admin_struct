@@ -17,7 +17,6 @@ class StringField extends GridField
         $this->setMaxLength($maxLength);
     }
 
-
     protected function outputFieldParams(): ?array
     {
         $params = [
@@ -30,6 +29,7 @@ class StringField extends GridField
         if ($this->mask) {
             $params[] = 'mask';
         }
+
         return $params;
     }
 }

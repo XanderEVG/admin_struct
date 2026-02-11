@@ -25,6 +25,7 @@ class EditorField extends GridField
         if ($this->maxLength) {
             $params[] = 'maxLength';
         }
+
         return $params;
     }
 }

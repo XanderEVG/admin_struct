@@ -21,12 +21,12 @@ class Button implements \JsonSerializable
         public ?bool $enable = true,
         public ?GridFields $struct = null,
     ) {
-        if ($this->getUrl === null && $this->actionUrl === null) {
-            throw new \RuntimeException("GetUrl and actionUrl not specified");
+        if (null === $this->getUrl && null === $this->actionUrl) {
+            throw new \RuntimeException('GetUrl and actionUrl not specified');
         }
 
-        if ($this->actionUrl !== null && $this->actionMethod === null) {
-            throw new \RuntimeException("actionMethod not specified");
+        if (null !== $this->actionUrl && null === $this->actionMethod) {
+            throw new \RuntimeException('actionMethod not specified');
         }
     }
 
