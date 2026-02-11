@@ -177,6 +177,9 @@ class GridField implements \JsonSerializable
         if ($this->customOptions) {
             $params[] = 'customOptions';
         }
+        if ($this->showOn) {
+            $params[] = 'showOn';
+        }
 
         return $params;
     }
