@@ -2,6 +2,7 @@
 
 namespace Xanderevg\AdminStructLibrary;
 
+use \RuntimeException;
 use Xanderevg\AdminStructLibrary\Enums\FieldShowIn;
 use Xanderevg\AdminStructLibrary\Enums\FieldShowOn;
 use Xanderevg\AdminStructLibrary\Enums\FieldType;
@@ -42,7 +43,7 @@ class GridField implements \JsonSerializable
     public ?FieldShowOn $showOn = FieldShowOn::ALL;
     public ?FieldShowIn $showIn = FieldShowIn::ALL;
     public ?bool $autogrow = false;
-    public ?array $subStruct = null;
+    public ?GridFields $subStruct = null;
     public ?GridPlace $gridPlace = null;
     public ?string $hint = null;
     public ?string $placeholder = null;
@@ -105,6 +106,9 @@ class GridField implements \JsonSerializable
         ];
 
         if ($this->subStruct) {
+            if ($this->type !== FieldType::SUBGRID) {
+                throw new RuntimeException("Не пустой subStruct в поле типа не SUBGRID");
+            }
             $response['subStruct'] = $this->subStruct;
         }
 
@@ -116,11 +120,6 @@ class GridField implements \JsonSerializable
         return $response;
     }
 
-    protected function outputFieldParams(): ?array
-    {
-        return null;
-    }
-
     protected function outputFieldStdParams(): ?array
     {
         $params = [
@@ -128,12 +127,32 @@ class GridField implements \JsonSerializable
             'label',
             'type',
             'required',
-            'sortable',
-            'filterable',
-            'readonly',
             'showIn',
             'showOn',
         ];
+
+        if ($this->sortable) {
+            $params[] = 'sortable';
+        }
+
+        if ($this->filterable) {
+            $params[] = 'filterable';
+        }
+
+        if ($this->readonly) {
+            $params[] = 'readonly';
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         if ($this->alias) {
             $params[] = 'alias';
@@ -414,6 +433,23 @@ class GridField implements \JsonSerializable
     public function setRadioGroup(?string $radioGroup): GridField
     {
         $this->radioGroup = $radioGroup;
+
+        return $this;
+    }
+
+    protected function outputFieldParams(): ?array
+    {
+        return null;
+    }
+
+    public function getSubStruct(): ?array
+    {
+        return $this->subStruct;
+    }
+
+    public function setSubStruct(?GridFields $subStruct): GridField
+    {
+        $this->subStruct = $subStruct;
 
         return $this;
     }
