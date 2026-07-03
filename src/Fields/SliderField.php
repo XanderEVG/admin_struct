@@ -12,11 +12,13 @@ class SliderField extends GridField
         string $label,
         int $min,
         int $max,
+        float $step,
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::SLIDER, alias: $alias);
         $this->setMin($min);
         $this->setMax($max);
+        $this->setStep($step);
     }
 
     protected function outputFieldParams(): ?array
