@@ -5,10 +5,10 @@ namespace Xanderevg\AdminStructLibrary;
 class GridPlace implements \JsonSerializable
 {
     public function __construct(
-        public ?string $rowStart = null,
-        public ?string $rowEnd = null,
-        public ?string $colStart = null,
-        public ?string $colEnd = null,
+        public ?int $rowStart = null,
+        public ?int $rowEnd = null,
+        public ?int $colStart = null,
+        public ?int $colEnd = null,
     ) {
     }
 
