@@ -12,7 +12,7 @@ class SliderField extends GridField
         string $label,
         int $min,
         int $max,
-        float $step,
+        float $step=0.1,
         ?string $alias = null,
     ) {
         parent::__construct($name, $label, FieldType::SLIDER, alias: $alias);
