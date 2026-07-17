@@ -5,6 +5,7 @@ namespace Xanderevg\AdminStructLibrary\Enums;
 enum ButtonType implements \JsonSerializable
 {
     case NONE;
+    case NEW_TAB;
     case RELOAD;
     case MODEL;
     case MODAL_HTML;
